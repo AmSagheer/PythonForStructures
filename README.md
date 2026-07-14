@@ -25,7 +25,7 @@ No prior programming experience required. If you understand the engineering, you
 | # | Tool | Concepts | Status |
 |---|------|----------|--------|
 | 01 | [Shear & Moment Diagrams](./01-shear-moment-diagram/) | NumPy, Matplotlib, Statics | ✅ Ready |
-| 02 | ACI Load Combinations Generator | Conditionals, DataFrames | 🔜 Coming |
+| 02 | ACI Load Combinations Generator | Conditionals, DataFrames | ✅ Ready |
 | 03 | Beam Deflection Plotter | Integration, Visualization | 🔜 Coming |
 | 04 | Section Property Calculator | NumPy, Geometry | 🔜 Coming |
 | 05 | Rebar Weight Estimator | Pandas, Bar Schedules | 🔜 Coming |
@@ -72,6 +72,23 @@ a = 2.0      # load position from left support (m)
 ```
 
 ![Shear and Moment Diagram](./01-shear-moment-diagram/beam_diagram.png)
+
+## 📐 Example Output — Tool #02
+
+All 8 ACI 318-19 load combinations (Table 5.3.1), ranked and rendered as a clean table with the governing case highlighted.
+
+```python
+D  = 50.0    # Dead Load
+L  = 30.0    # Live Load
+Lr = 10.0    # Roof Live Load
+S  =  5.0    # Snow Load
+W  = 15.0    # Wind Load
+E  = 12.0    # Earthquake Load
+```
+
+![Load Combinations Table](./02-load-combinations/load_combinations_table.png)
+
+*Based on ACI 318-19, Table 5.3.1. Always verify against your project's applicable code edition and local amendments.*
 
 ---
 
