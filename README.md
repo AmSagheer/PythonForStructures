@@ -25,8 +25,8 @@ No prior programming experience required. If you understand the engineering, you
 | # | Tool | Concepts | Status |
 |---|------|----------|--------|
 | 01 | [Shear & Moment Diagrams](./01-shear-moment-diagram/) | NumPy, Matplotlib, Statics | ✅ Ready |
-| 02 | ACI Load Combinations Generator | Conditionals, DataFrames | ✅ Ready |
-| 03 | Beam Deflection Plotter | Integration, Visualization | 🔜 Coming |
+| 02 | [ACI Load Combinations Generator](./02-load-combinations/) | Pandas, Dictionaries, Table Rendering | ✅ Ready |
+| 03 | [Beam Deflection Checker (ACI 318-19)](./03-beam-deflection/) | NumPy, ACI Serviceability Limits | ✅ Ready |
 | 04 | Section Property Calculator | NumPy, Geometry | 🔜 Coming |
 | 05 | Rebar Weight Estimator | Pandas, Bar Schedules | 🔜 Coming |
 | 06 | Reinforcement Ratio Checker | Code Compliance, Logic | 🔜 Coming |
@@ -91,6 +91,21 @@ E  = 12.0    # Earthquake Load
 *Based on ACI 318-19, Table 5.3.1. Always verify against your project's applicable code edition and local amendments.*
 
 ---
+## 📐 Example Output — Tool #03
+
+Computes the deflected shape of a simply supported beam under a point load, then checks the maximum deflection against all 4 ACI 318-19 Table 24.2.2 serviceability limits — PASS/FAIL rendered automatically.
+
+```python
+L  = 6.0        # span length (m)
+P  = 50.0       # point load (kN)
+a  = 2.0        # load position from left support (m)
+E  = 200e6      # modulus of elasticity (kN/m^2)
+I  = 0.0002     # moment of inertia (m^4)
+```
+
+![Beam Deflection ACI Check](./03-beam-deflection/beam_deflection_aci.png)
+
+*Checks total computed deflection against ACI 318-19 Table 24.2.2. A full ACI deflection design also accounts for effective (cracked) moment of inertia and separates immediate vs. long-term deflection — this tool is a fast serviceability screening check, not a substitute for the complete code procedure.*
 
 ## 🧠 The Philosophy
 
