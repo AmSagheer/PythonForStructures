@@ -27,8 +27,8 @@ No prior programming experience required. If you understand the engineering, you
 | 01 | [Shear & Moment Diagrams](./01-shear-moment-diagram/) | NumPy, Matplotlib, Statics | ✅ Ready |
 | 02 | [ACI Load Combinations Generator](./02-load-combinations/) | Pandas, Dictionaries, Table Rendering | ✅ Ready |
 | 03 | [Beam Deflection Checker (ACI 318-19)](./03-beam-deflection/) | NumPy, ACI Serviceability Limits | ✅ Ready |
-| 04 | Section Property Calculator | NumPy, Geometry | 🔜 Coming |
-| 05 | Rebar Weight Estimator | Pandas, Bar Schedules | 🔜 Coming |
+| 04 | [Section Property Calculator](./04-section-properties/) | NumPy, Parallel Axis Theorem | ✅ Ready |
+| 05 | [Rebar Weight & Cost Estimator](./05-rebar-estimator/) | NumPy, Cost Analysis | ✅ Ready |
 | 06 | Reinforcement Ratio Checker | Code Compliance, Logic | 🔜 Coming |
 | 07 | Wind Load Calculator (ASCE 7) | Functions, Standards | 🔜 Coming |
 | 08 | Concrete Strength Data Analyzer | Statistics, SciPy | 🔜 Coming |
@@ -106,6 +106,38 @@ I  = 0.0002     # moment of inertia (m^4)
 ![Beam Deflection ACI Check](./03-beam-deflection/beam_deflection_aci.png)
 
 *Checks total computed deflection against ACI 318-19 Table 24.2.2. A full ACI deflection design also accounts for effective (cracked) moment of inertia and separates immediate vs. long-term deflection — this tool is a fast serviceability screening check, not a substitute for the complete code procedure.*
+
+## 📐 Example Output — Tool #04
+
+Computes area, moment of inertia, section modulus, and radius of gyration for an I-section — verified by hand against the parallel axis theorem.
+
+```python
+bf = 150     # flange width (mm)
+tf = 12      # flange thickness (mm)
+d  = 300     # overall depth (mm)
+tw = 8       # web thickness (mm)
+```
+
+![Section Properties](./04-section-properties/section_properties.png)
+
+---
+
+## 📐 Example Output — Tool #05
+
+Calculates exact rebar tonnage and cost from a bar schedule, then compares it against a typical site waste allowance — showing the real dollar impact of precise calculation.
+
+```python
+bar_schedule = [
+    {"dia": 16, "count": 420, "length": 6.0},
+    {"dia": 12, "count": 680, "length": 2.4},
+    {"dia": 20, "count": 180, "length": 6.0},
+    {"dia": 25, "count": 96,  "length": 6.0},
+]
+```
+
+![Rebar Estimator](./05-rebar-estimator/rebar_estimator.png)
+
+*Unit weights verified against standard steel rebar tables (density = 7850 kg/m³). Waste allowance shown is illustrative — actual site allowances vary by contractor and project.*
 
 ## 🧠 The Philosophy
 
