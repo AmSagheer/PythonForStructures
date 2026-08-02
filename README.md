@@ -29,7 +29,7 @@ No prior programming experience required. If you understand the engineering, you
 | 03 | [Beam Deflection Checker (ACI 318-19)](./03-beam-deflection/) | NumPy, ACI Serviceability Limits | ✅ Ready |
 | 04 | [Section Property Calculator](./04-section-properties/) | NumPy, Parallel Axis Theorem | ✅ Ready |
 | 05 | [Rebar Weight & Cost Estimator](./05-rebar-estimator/) | NumPy, Cost Analysis | ✅ Ready |
-| 06 | Reinforcement Ratio Checker | Code Compliance, Logic | 🔜 Coming |
+| 06 | [Reinforcement Ratio Checker](./06-reinforcement-ratio/) | ACI 318-19, Strain Compatibility | ✅ Ready |
 | 07 | Wind Load Calculator (ASCE 7) | Functions, Standards | 🔜 Coming |
 | 08 | Concrete Strength Data Analyzer | Statistics, SciPy | 🔜 Coming |
 | 09 | Sensor Data Cleaner | Pandas, Real Monitoring Data | 🔜 Coming |
@@ -138,6 +138,23 @@ bar_schedule = [
 ![Rebar Estimator](./05-rebar-estimator/rebar_estimator.png)
 
 *Unit weights verified against standard steel rebar tables (density = 7850 kg/m³). Waste allowance shown is illustrative — actual site allowances vary by contractor and project.*
+
+## 📐 Example Output — Tool #06
+
+Checks provided reinforcement against both ACI 318-19 limits in one pass: the minimum steel requirement (ACI 9.6.1.2, prevents brittle cracking failure) and the maximum steel limit (ACI 9.3.3.1, tension-controlled strain requirement, ensures ductile yielding before concrete crushes).
+
+```python
+fc  = 28.0     # concrete strength (MPa)
+fy  = 420.0    # steel yield strength (MPa)
+bw  = 300.0    # beam width (mm)
+d   = 450.0    # effective depth (mm)
+As_provided = 1200.0   # steel area provided (mm^2)
+```
+
+![Reinforcement Ratio Check](./06-reinforcement-ratio/reinforcement_ratio.png)
+
+*Maximum reinforcement uses the standard tension-controlled strain-limit derivation (εt ≥ 0.005) for beams with low axial load. Compression reinforcement, T-beams, and axial load interaction require additional checks beyond this script.*
+
 
 ## 🧠 The Philosophy
 
