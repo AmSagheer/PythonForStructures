@@ -30,8 +30,8 @@ No prior programming experience required. If you understand the engineering, you
 | 04 | [Section Property Calculator](./04-section-properties/) | NumPy, Parallel Axis Theorem | ✅ Ready |
 | 05 | [Rebar Weight & Cost Estimator](./05-rebar-estimator/) | NumPy, Cost Analysis | ✅ Ready |
 | 06 | [Reinforcement Ratio Checker](./06-reinforcement-ratio/) | ACI 318-19, Strain Compatibility | ✅ Ready |
-| 07 | Wind Load Calculator (ASCE 7) | Functions, Standards | 🔜 Coming |
-| 08 | Concrete Strength Data Analyzer | Statistics, SciPy | 🔜 Coming |
+| 07 | [Wind Load Calculator (ASCE 7)](./07-wind-load/) | Velocity Pressure, MWFRS | ✅ Ready |
+| 08 | [Concrete Strength Acceptance Checker](./08-concrete-strength/) | ACI 318-19, NumPy | ✅ Ready |
 | 09 | Sensor Data Cleaner | Pandas, Real Monitoring Data | 🔜 Coming |
 | 10 | Earthquake Response Plotter | Signal Processing, Ground Motion | 🔜 Coming |
 | 11 | Simple FEM Truss Solver | Matrix Methods, Linear Algebra | 🔜 Coming |
@@ -155,6 +155,34 @@ As_provided = 1200.0   # steel area provided (mm^2)
 
 *Maximum reinforcement uses the standard tension-controlled strain-limit derivation (εt ≥ 0.005) for beams with low axial load. Compression reinforcement, T-beams, and axial load interaction require additional checks beyond this script.*
 
+## 📐 Example Output — Tool #07
+
+Computes ASCE 7 velocity pressure and windward wall MWFRS design pressure at any height and exposure category — verified against a published Kz calculation example.
+
+```python
+V, z, exposure = 115.0, 30.0, "C"
+Kzt, Kd, Ke = 1.0, 0.85, 1.0
+```
+
+![Wind Load Calculator](./07-wind-load/wind_load.png)
+
+*Covers velocity pressure and MWFRS windward wall pressure only. Components and cladding, leeward/side walls, roof pressures, and flexible-structure effects require additional ASCE 7 procedures beyond this script.*
+
+---
+
+## 📐 Example Output — Tool #08
+
+Checks a full series of concrete strength test results against both ACI 318-19 Section 26.12.3.1 acceptance criteria at once: the 3-test running average requirement and the individual test tolerance limit.
+
+```python
+fc_specified = 24.0
+test_results = [29.0, 29.3, 29.7, 30.3, 28.8, 27.8, 27.3,
+                 25.0, 23.4, 26.1, 23.0, 24.3, 23.0, 19.0, 23.0]
+```
+
+![Concrete Strength Acceptance](./08-concrete-strength/concrete_strength.png)
+
+*Validated against a published ACI worked example dataset — this script reproduces the same 3 failing tests and identical pass/fail conclusions as the official reference.*
 
 ## 🧠 The Philosophy
 
